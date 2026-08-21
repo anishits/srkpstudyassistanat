@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Courses & Syllabus | SRKP AI</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tutor.css">
+
+<style>
+
+.syllabus-page {
+    max-width:1200px;
+    margin:auto;
+    padding:70px 5%;
+}
+
+.syllabus-hero {
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+.syllabus-hero h1 {
+    font-size:55px;
+    margin:20px 0;
+}
+
+.syllabus-hero h1 span {
+    color:#9b89ff;
+}
+
+.syllabus-hero p {
+    color:#9ca6bb;
+    line-height:1.7;
+}
+
+.syllabus-controls {
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.syllabus-controls select,
+.syllabus-controls input {
+    padding:15px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#101424;
+    color:white;
+    outline:none;
+}
+
+.syllabus-list {
+    margin-top:30px;
+}
+
+.course-card {
+    padding:25px;
+    margin-bottom:15px;
+    border-radius:18px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.course-card h2 {
+    margin-bottom:10px;
+}
+
+.course-card p {
+    color:#9ca6bb;
+}
+
+.subjects {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.subjects span {
+    padding:7px 10px;
+    border-radius:8px;
+    background:rgba(124,92,255,.12);
+    color:#b9adff;
+    font-size:12px;
+}
+
+@media(max-width:700px) {
+    .syllabus-controls {
+        grid-template-columns:1fr;
+    }
+
+    .syllabus-hero h1 {
+        font-size:42px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+
+<div class="logo-box">S</div>
+
+<div>
+<h2>SRKP AI</h2>
+<span>Study Assistant</span>
+</div>
+
+</div>
+
+<nav id="navigation">
+
+<a href="index.html">Home</a>
+<a href="tutor.html">AI Tutor</a>
+<a href="syllabus.html" class="active">Syllabus</a>
+<a href="notes.html">Notes</a>
+<a href="papers.html">Papers</a>
+
+</nav>
+
+<button
+class="menu-button"
+onclick="toggleMenu()">
+☰
+</button>
+
+</header>
+
+
+<main class="syllabus-page">
+
+<section class="syllabus-hero">
+
+<div class="college-badge">
+📚 SRKP Academic Syllabus
+</div>
+
+<h1>
+Courses &
+<span>Syllabus</span>
+</h1>
+
+<p>
+Browse courses, semesters and subjects for
+BA, BSc, BCom, MA, MSc and MCom.
+</p>
+
+</section>
+
+
+<div class="syllabus-controls">
+
+<select id="syllabusCourse">
+
+<option value="all">All Courses</option>
+<option value="BA">BA</option>
+<option value="BSc">BSc</option>
+<option value="BCom">BCom</option>
+<option value="MA">MA</option>
+<option value="MSc">MSc</option>
+<option value="MCom">MCom</option>
+
+</select>
+
+
+<select id="syllabusSemester">
+
+<option value="all">All Semesters</option>
+
+<option value="1">Semester 1</option>
+<option value="2">Semester 2</option>
+<option value="3">Semester 3</option>
+<option value="4">Semester 4</option>
+<option value="5">Semester 5</option>
+<option value="6">Semester 6</option>
+
+</select>
+
+
+<input
+id="syllabusSearch"
+placeholder="Search subject..."
+>
+
+</div>
+
+
+<div
+id="syllabusList"
+class="syllabus-list">
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="copyright">
+
+© 2026 SRKP AI Study Assistant
+
+<br>
+
+Designed & Developed by
+<strong>Anish Jodhawat</strong>
+
+</div>
+
+</footer>
+
+
+<script src="script.js"></script>
+<script src="syllabus.js"></script>
+
+</body>
+
+</html>
