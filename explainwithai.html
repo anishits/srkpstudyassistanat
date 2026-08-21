@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Explain with AI | SRKP AI Study Assistant</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050816;
+    --card:rgba(15,23,42,.82);
+    --border:rgba(255,255,255,.12);
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --purple:#8b5cf6;
+    --cyan:#06b6d4;
+    --green:#22c55e;
+}
+
+body{
+    font-family:Poppins,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(139,92,246,.22),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(6,182,212,.18),transparent 28%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:70px;
+    padding:0 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(5,8,22,.75);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+}
+
+.logo b{
+    color:#a78bfa;
+}
+
+.logo-icon{
+    color:#67e8f9;
+}
+
+.navbar nav{
+    display:flex;
+    gap:25px;
+}
+
+.navbar nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:14px;
+}
+
+.navbar nav a:hover{
+    color:white;
+}
+
+/* PAGE */
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+.hero{
+    text-align:center;
+    padding:70px 10px 40px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid rgba(139,92,246,.4);
+    background:rgba(139,92,246,.1);
+    color:#c4b5fd;
+    border-radius:30px;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.hero h1{
+    margin-top:18px;
+    font-size:clamp(38px,6vw,70px);
+    line-height:1.05;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#a78bfa,#67e8f9);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:700px;
+    margin:20px auto;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+
+/* MAIN GRID */
+
+.main-grid{
+    display:grid;
+    grid-template-columns:390px 1fr;
+    gap:25px;
+    align-items:start;
+}
+
+
+/* CARDS */
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:25px;
+    backdrop-filter:blur(20px);
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+
+/* FORM */
+
+.card h2{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin:17px 0 7px;
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+select,
+input,
+textarea{
+    width:100%;
+    padding:13px 14px;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:12px;
+    color:white;
+    outline:none;
+    font-family:Poppins,sans-serif;
+}
+
+select option{
+    background:#111827;
+}
+
+textarea{
+    min-height:145px;
+    resize:vertical;
+}
+
+select:focus,
+input:focus,
+textarea:focus{
+    border-color:var(--purple);
+    box-shadow:0 0 0 3px rgba(139,92,246,.12);
+}
+
+
+/* BUTTON */
+
+.ai-button{
+    width:100%;
+    margin-top:22px;
+    padding:15px;
+    border:0;
+    border-radius:13px;
+    color:white;
+    font-family:Poppins,sans-serif;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    background:linear-gradient(100deg,var(--purple),var(--cyan));
+    transition:.3s;
+}
+
+.ai-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(6,182,212,.2);
+}
+
+
+/* ANSWER */
+
+.answer-card{
+    min-height:650px;
+}
+
+.answer-header{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid var(--border);
+    padding-bottom:16px;
+}
+
+.status{
+    color:#67e8f9;
+    font-size:12px;
+}
+
+.empty{
+    min-height:570px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:var(--muted);
+}
+
+.robot{
+    font-size:85px;
+    animation:robotFloat 2.5s infinite ease-in-out;
+}
+
+@keyframes robotFloat{
+
+    0%,100%{
+        transform:translateY(0) rotate(-2deg);
+    }
+
+    50%{
+        transform:translateY(-18px) rotate(2deg);
+    }
+}
+
+
+/* RESULT */
+
+.result h2{
+    margin-top:25px;
+    color:#c4b5fd;
+}
+
+.result h3{
+    margin-top:25px;
+}
+
+.result p,
+.result li{
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+.result ul{
+    padding-left:22px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:15px 0;
+}
+
+.tag{
+    background:rgba(139,92,246,.12);
+    border:1px solid rgba(139,92,246,.3);
+    padding:6px 11px;
+    border-radius:30px;
+    color:#c4b5fd;
+    font-size:11px;
+}
+
+
+/* 3D SECTION */
+
+.visual-section{
+    margin-top:25px;
+}
+
+.visual-section h2{
+    margin-bottom:8px;
+}
+
+.visual-section p{
+    color:var(--muted);
+}
+
+.visual-box{
+    height:420px;
+    margin-top:20px;
+    border-radius:25px;
+    border:1px solid var(--border);
+    background:
+        radial-gradient(circle at center,
+        rgba(139,92,246,.16),
+        transparent 55%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+
+/* 3D ATOM */
+
+.atom{
+    width:230px;
+    height:230px;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:atomRotate 10s linear infinite;
+}
+
+.nucleus{
+    position:absolute;
+    width:65px;
+    height:65px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,#fff,#8b5cf6 35%,#06b6d4);
+    box-shadow:
+        0 0 30px #8b5cf6,
+        0 0 80px rgba(6,182,212,.5);
+}
+
+.orbit{
+    position:absolute;
+    width:230px;
+    height:85px;
+    border:2px solid rgba(103,232,249,.7);
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(25deg);
+}
+
+.orbit.two{
+    transform:translate(-50%,-50%) rotate(85deg);
+}
+
+.orbit.three{
+    transform:translate(-50%,-50%) rotate(145deg);
+}
+
+.electron{
+    position:absolute;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#67e8f9;
+    box-shadow:0 0 18px #67e8f9;
+    top:-7px;
+    left:50%;
+}
+
+@keyframes atomRotate{
+    from{
+        transform:rotateY(0deg) rotateX(10deg);
+    }
+
+    to{
+        transform:rotateY(360deg) rotateX(10deg);
+    }
+}
+
+
+/* SUBJECT VISUAL */
+
+.subject-visual{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    padding:10px 15px;
+    background:rgba(0,0,0,.35);
+    border:1px solid var(--border);
+    border-radius:12px;
+    font-size:13px;
+}
+
+
+/* TOOLS */
+
+.tools{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.tool{
+    padding:20px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.03);
+    transition:.3s;
+}
+
+.tool:hover{
+    transform:translateY(-6px);
+    border-color:var(--purple);
+}
+
+.tool-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.tool h3{
+    font-size:16px;
+}
+
+.tool p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+    line-height:1.6;
+}
+
+
+/* FOOTER */
+
+footer{
+    margin-top:70px;
+    padding:30px;
+    text-align:center;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    font-size:13px;
+}
+
+footer strong{
+    color:#c4b5fd;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .main-grid{
+        grid-template-columns:1fr;
+    }
+
+    .tools{
+        grid-template-columns:1fr;
+    }
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        padding:15px;
+        gap:12px;
+    }
+
+    .navbar nav{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">✦</span>
+        SRKP <b>AI</b>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#syllabus">Syllabus</a>
+        <a href="explainwithai.html">Explain with AI</a>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="hero">
+
+    <div class="badge">
+        MDSU • SRKP PG COLLEGE • AI LEARNING
+    </div>
+
+    <h1>
+        Explain
+        <span>with AI</span>
+        🤖
+    </h1>
+
+    <p>
+        Select your course, semester and subject.
+        Ask any academic question and learn it
+        through simple explanations, important points,
+        examples and exam-oriented answers.
+    </p>
+
+</section>
+
+
+
+<section class="main-grid">
+
+
+<!-- LEFT -->
+
+<div class="card">
+
+    <h2>
+        📚 Select Your Study
+    </h2>
+
+
+    <label>
+        Course
+    </label>
+
+    <select id="course">
+
+        <option value="BA">
+            B.A.
+        </option>
+
+        <option value="BSc">
+            B.Sc.
+        </option>
+
+        <option value="BCom">
+            B.Com.
+        </option>
+
+        <option value="MA">
+            M.A.
+        </option>
+
+        <option value="MSc">
+            M.Sc.
+        </option>
+
+        <option value="MCom">
+            M.Com.
+        </option>
+
+    </select>
+
+
+
+    <label>
+        Semester
+    </label>
+
+    <select id="semester"></select>
+
+
+
+    <label>
+        Subject
+    </label>
+
+    <select id="subject">
+
+        <option>
+            Select course first
+        </option>
+
+    </select>
+
+
+
+    <label>
+        Topic
+    </label>
+
+    <input
+        id="topic"
+        placeholder="Example: Cell division"
+    >
+
+
+
+    <label>
+        Ask Your Question
+    </label>
+
+    <textarea
+        id="question"
+        placeholder="Example: Explain this topic in very simple language..."
+    ></textarea>
+
+
+
+    <label>
+        Answer Type
+    </label>
+
+    <select id="answerType">
+
+        <option value="easy">
+            Very Easy Explanation
+        </option>
+
+        <option value="college">
+            College Level
+        </option>
+
+        <option value="detailed">
+            Detailed Explanation
+        </option>
+
+        <option value="exam">
+            Exam-Oriented Answer
+        </option>
+
+        <option value="short">
+            Short Notes
+        </option>
+
+    </select>
+
+
+
+    <button
+        class="ai-button"
+        onclick="explainWithAI()">
+
+        ✨ Explain with AI
+
+    </button>
+
+</div>
+
+
+
+<!-- RIGHT -->
+
+<div class="card answer-card">
+
+    <div class="answer-header">
+
+        <strong>
+            🤖 AI Explanation
+        </strong>
+
+        <span
+            id="status"
+            class="status">
+
+            Ready
+
+        </span>
+
+    </div>
+
+
+    <div id="answer">
+
+        <div class="empty">
+
+            <div>
+
+                <div class="robot">
+                    🤖
+                </div>
+
+                <h2>
+                    Your AI Tutor is Ready
+                </h2>
+
+                <p>
+                    Select a subject and ask a question.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- 3D -->
+
+<section class="visual-section">
+
+    <div class="card">
+
+        <h2>
+            🧬 3D Interactive Learning
+        </h2>
+
+        <p>
+            The visual model changes according to
+            the selected subject category.
+        </p>
+
+
+        <div class="visual-box">
+
+            <div
+                id="atom"
+                class="atom">
+
+                <div class="nucleus"></div>
+
+                <div class="orbit">
+                    <div class="electron"></div>
+                </div>
+
+                <div class="orbit two">
+                    <div class="electron"></div>
+                </div>
+
+                <div class="orbit three">
+                    <div class="electron"></div>
+                </div>
+
+            </div>
+
+
+            <div
+                id="visualLabel"
+                class="subject-visual">
+
+                🔬 Select a subject
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- TOOLS -->
+
+<section class="tools">
+
+
+<div class="tool">
+
+    <div class="tool-icon">
+        🧠
+    </div>
+
+    <h3>
+        Easy Explanation
+    </h3>
+
+    <p>
+        Convert difficult concepts
+        into simple language.
+    </p>
+
+</div>
+
+
+
+<div class="tool">
+
+    <div class="tool-icon">
+        📝
+    </div>
+
+    <h3>
+        Exam Answer
+    </h3>
+
+    <p>
+        Create structured answers
+        for university examinations.
+    </p>
+
+</div>
+
+
+
+<div class="tool">
+
+    <div class="tool-icon">
+        ❓
+    </div>
+
+    <h3>
+        Practice MCQs
+    </h3>
+
+    <p>
+        Generate practice questions
+        from the selected topic.
+    </p>
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    SRKP AI Study Assistant
+    •
+    Made with ❤️ by
+    <strong>
+        Anish Jodhawat
+    </strong>
+
+</footer>
+
+
+
+<script>
+
+
+/* ==================================================
+   COURSE → SEMESTER → SUBJECT DATABASE
+================================================== */
+
+const subjects = {
+
+    BA: [
+
+        "Economics",
+        "History",
+        "Geography",
+        "Political Science",
+        "Public Administration",
+        "Sociology",
+        "Psychology",
+        "Philosophy",
+        "English Literature",
+        "Hindi Literature",
+        "Sanskrit",
+        "Urdu",
+        "Persian",
+        "Sindhi",
+        "Rajasthani",
+        "Home Science",
+        "Drawing & Painting",
+        "Music",
+        "Science of Living, Yoga & Jainology",
+        "Livestock & Dairying",
+        "General English",
+        "General Hindi"
+
+    ],
+
+
+    BSc: [
+
+        "Physics",
+        "Chemistry",
+        "Mathematics",
+        "Botany",
+        "Zoology",
+        "Geology",
+        "Biotechnology",
+        "Computer Science",
+        "Information Technology",
+        "Food Science & Nutrition",
+        "Naturopathy & Yogic Science",
+        "General English",
+        "General Hindi"
+
+    ],
+
+
+    BCom: [
+
+        "Accounting",
+        "Business Administration",
+        "Economics",
+        "Business Law",
+        "Business Communication",
+        "Cost Accounting",
+        "Business Statistics",
+        "Income Tax",
+        "Auditing",
+        "General English",
+        "General Hindi",
+        "Rajasthani"
+
+    ],
+
+
+    MA: [
+
+        "English",
+        "Hindi",
+        "Sanskrit",
+        "Urdu",
+        "Sindhi",
+        "Rajasthani",
+        "History",
+        "Geography",
+        "Political Science",
+        "Public Administration",
+        "Economics",
+        "Sociology",
+        "Philosophy",
+        "Psychology",
+        "Home Science",
+        "Indian Music",
+        "Drawing & Painting",
+        "Journalism & Mass Communication",
+        "Population Studies"
+
+    ],
+
+
+    MSc: [
+
+        "Physics",
+        "Chemistry",
+        "Mathematics",
+        "Botany",
+        "Zoology",
+        "Geology / Earth Science",
+        "Microbiology",
+        "Environmental Science",
+        "Computer Science",
+        "Food & Nutrition",
+        "Information Technology",
+        "Remote Sensing & Geo-Informatics"
+
+    ],
+
+
+    MCom: [
+
+        "Accountancy & Business Statistics (ABST)",
+        "Business Administration",
+        "Economic Administration & Financial Management (EAFM)"
+
+    ]
+
+};
+
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const course =
+    document.getElementById("course");
+
+const semester =
+    document.getElementById("semester");
+
+const subject =
+    document.getElementById("subject");
+
+const topic =
+    document.getElementById("topic");
+
+const question =
+    document.getElementById("question");
+
+const status =
+    document.getElementById("status");
+
+const answer =
+    document.getElementById("answer");
+
+const visualLabel =
+    document.getElementById("visualLabel");
+
+
+/* ==================================================
+   COURSE → SEMESTER
+================================================== */
+
+function updateSemesters(){
+
+    semester.innerHTML="";
+
+    let total =
+        ["MA","MSc","MCom"].includes(course.value)
+        ? 4
+        : 6;
+
+    for(let i=1;i<=total;i++){
+
+        const option =
+            document.createElement("option");
+
+        option.value=i;
+
+        option.textContent =
+            "Semester " + i;
+
+        semester.appendChild(option);
+
+    }
+
+    updateSubjects();
+
+}
+
+
+/* ==================================================
+   SUBJECT
+================================================== */
+
+function updateSubjects(){
+
+    subject.innerHTML="";
+
+    subjects[course.value].forEach(
+        item => {
+
+            const option =
+                document.createElement("option");
+
+            option.value=item;
+
+            option.textContent=item;
+
+            subject.appendChild(option);
+
+        }
+    );
+
+    updateVisual();
+
+}
+
+
+/* ==================================================
+   COURSE CHANGE
+================================================== */
+
+course.addEventListener(
+    "change",
+    updateSemesters
+);
+
+
+/* ==================================================
+   SUBJECT CHANGE
+================================================== */
+
+subject.addEventListener(
+    "change",
+    updateVisual
+);
+
+
+/* ==================================================
+   3D VISUAL
+================================================== */
+
+function updateVisual(){
+
+    const selected =
+        subject.value.toLowerCase();
+
+
+    if(
+        selected.includes("physics") ||
+        selected.includes("chemistry")
+    ){
+
+        visualLabel.innerHTML =
+            "⚛️ Physics / Chemistry 3D Model";
+
+    }
+
+    else if(
+        selected.includes("botany") ||
+        selected.includes("zoology") ||
+        selected.includes("biology") ||
+        selected.includes("microbiology")
+    ){
+
+        visualLabel.innerHTML =
+            "🧬 Biology 3D Model";
+
+    }
+
+    else if(
+        selected.includes("mathematics") ||
+        selected.includes("account") ||
+        selected.includes("statistics")
+    ){
+
+        visualLabel.innerHTML =
+            "📐 Mathematical 3D Visualization";
+
+    }
+
+    else if(
+        selected.includes("computer") ||
+        selected.includes("information")
+    ){
+
+        visualLabel.innerHTML =
+            "💻 Computer Science 3D Model";
+
+    }
+
+    else if(
+        selected.includes("geography") ||
+        selected.includes("geology")
+    ){
+
+        visualLabel.innerHTML =
+            "🌍 Earth / Geography 3D Model";
+
+    }
+
+    else if(
+        selected.includes("history") ||
+        selected.includes("political") ||
+        selected.includes("sociology") ||
+        selected.includes("economics")
+    ){
+
+        visualLabel.innerHTML =
+            "🌐 Social Science Visualization";
+
+    }
+
+    else{
+
+        visualLabel.innerHTML =
+            "📚 Interactive 3D Learning Model";
+
+    }
+
+}
+
+
+/* ==================================================
+   AI EXPLANATION
+================================================== */
+
+function explainWithAI(){
+
+    const selectedCourse =
+        course.options[
+            course.selectedIndex
+        ].text;
+
+    const selectedSemester =
+        semester.value;
+
+    const selectedSubject =
+        subject.value;
+
+    const selectedTopic =
+        topic.value.trim();
+
+    const selectedQuestion =
+        question.value.trim();
+
+    const type =
+        document.getElementById(
+            "answerType"
+        ).value;
+
+
+    if(!selectedQuestion && !selectedTopic){
+
+        answer.innerHTML = `
+
+            <div class="empty">
+
+                <div>
+
+                    <div class="robot">
+                        ⚠️
+                    </div>
+
+                    <h2>
+                        Enter a topic or question
+                    </h2>
+
+                    <p>
+                        Ask something about
+                        your selected subject.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "Thinking...";
+
+
+    answer.innerHTML = `
+
+        <div class="empty">
+
+            <div>
+
+                <div class="robot">
+                    🧠
+                </div>
+
+                <h2>
+                    Preparing your explanation...
+                </h2>
+
+                <p>
+                    Organising the answer for
+                    ${selectedSubject}.
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    setTimeout(()=>{
+
+        status.textContent =
+            "Ready";
+
+
+        const text =
+            selectedQuestion ||
+            selectedTopic;
+
+
+        answer.innerHTML = `
+
+            <div class="result">
+
+                <h2>
+                    📚 ${escapeHTML(
+                        selectedSubject
+                    )}
+                </h2>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        ${selectedCourse}
+                    </span>
+
+                    <span class="tag">
+                        Semester ${selectedSemester}
+                    </span>
+
+                    <span class="tag">
+                        ${escapeHTML(type)}
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    ❓ Topic / Question
+                </h3>
+
+                <p>
+                    ${escapeHTML(text)}
+                </p>
+
+
+                <h3>
+                    💡 Easy Explanation
+                </h3>
+
+                <p>
+                    To understand this topic,
+                    first learn its basic definition
+                    and central idea. Then divide the
+                    concept into smaller parts and
+                    understand how those parts are
+                    connected. Finally, use an example
+                    or application to remember it.
+                </p>
+
+
+                <h3>
+                    ⭐ Important Points
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Learn the basic definition.
+                    </li>
+
+                    <li>
+                        Understand the main concept.
+                    </li>
+
+                    <li>
+                        Remember important terms,
+                        formulas or dates.
+                    </li>
+
+                    <li>
+                        Study examples and applications.
+                    </li>
+
+                    <li>
+                        Revise the topic before the exam.
+                    </li>
+
+                </ul>
+
+
+                <h3>
+                    📝 Exam Answer Structure
+                </h3>
+
+                <p>
+                    <b>1. Introduction:</b>
+                    Define the topic.
+                </p>
+
+                <p>
+                    <b>2. Main Explanation:</b>
+                    Explain the important points
+                    in a logical order.
+                </p>
+
+                <p>
+                    <b>3. Example:</b>
+                    Add a suitable example,
+                    diagram or formula where required.
+                </p>
+
+                <p>
+                    <b>4. Conclusion:</b>
+                    Finish with the main result
+                    or significance.
+                </p>
+
+
+                <h3>
+                    🎯 Revision Trick
+                </h3>
+
+                <p>
+                    Remember the concept using
+                    keywords, short notes, diagrams
+                    and practice questions.
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        🤖 SRKP AI
+                    </span>
+
+                    <span class="tag">
+                        Made by Anish Jodhawat
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    },1000);
+
+}
+
+
+/* ==================================================
+   SECURITY
+================================================== */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent=text;
+
+    return div.innerHTML;
+
+}
+
+
+/* ==================================================
+   START
+================================================== */
+
+updateSemesters();
+
+</script>
+
+</body>
+</html>
