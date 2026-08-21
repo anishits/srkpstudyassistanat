@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Notes | SRKP AI Study Assistant</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.notes-page {
+    max-width:1200px;
+    margin:auto;
+    padding:70px 5%;
+}
+
+.notes-hero {
+    text-align:center;
+    max-width:750px;
+    margin:auto;
+}
+
+.notes-hero h1 {
+    font-size:55px;
+    margin:20px 0;
+}
+
+.notes-hero h1 span {
+    color:#9c89ff;
+}
+
+.notes-hero p {
+    color:#9da7bc;
+    line-height:1.7;
+}
+
+.notes-controls {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:40px 0;
+}
+
+.notes-controls input,
+.notes-controls select {
+    padding:14px;
+    border-radius:11px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#101424;
+    color:white;
+}
+
+.notes-grid {
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+    gap:18px;
+}
+
+.note-card {
+    padding:23px;
+    border-radius:18px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.25s;
+}
+
+.note-card:hover {
+    transform:translateY(-5px);
+    border-color:rgba(124,92,255,.4);
+}
+
+.note-icon {
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.note-card h3 {
+    margin-bottom:8px;
+}
+
+.note-card p {
+    color:#939db2;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.note-card small {
+    display:block;
+    margin-top:15px;
+    color:#a796ff;
+}
+
+@media(max-width:850px) {
+    .notes-grid {
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px) {
+    .notes-grid,
+    .notes-controls {
+        grid-template-columns:1fr;
+    }
+
+    .notes-hero h1 {
+        font-size:42px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+
+<div class="logo-box">S</div>
+
+<div>
+<h2>SRKP AI</h2>
+<span>Study Assistant</span>
+</div>
+
+</div>
+
+<nav id="navigation">
+
+<a href="index.html">Home</a>
+<a href="tutor.html">AI Tutor</a>
+<a href="syllabus.html">Syllabus</a>
+<a href="notes.html" class="active">Notes</a>
+<a href="papers.html">Papers</a>
+
+</nav>
+
+<button
+class="menu-button"
+onclick="toggleMenu()">
+☰
+</button>
+
+</header>
+
+
+<main class="notes-page">
+
+<section class="notes-hero">
+
+<div class="college-badge">
+📝 Study Notes Hub
+</div>
+
+<h1>
+College
+<span>Notes</span>
+</h1>
+
+<p>
+Find and organise notes for different courses
+and subjects.
+</p>
+
+</section>
+
+
+<div class="notes-controls">
+
+<input
+id="noteSearch"
+type="search"
+placeholder="Search notes or subject..."
+>
+
+<select id="noteCourse">
+
+<option value="all">All Courses</option>
+<option>BA</option>
+<option>BSc</option>
+<option>BCom</option>
+<option>MA</option>
+<option>MSc</option>
+<option>MCom</option>
+
+</select>
+
+</div>
+
+
+<div
+id="notesGrid"
+class="notes-grid">
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="copyright">
+
+© 2026 SRKP AI Study Assistant
+
+<br>
+
+Designed & Developed by
+<strong>Anish Jodhawat</strong>
+
+</div>
+
+</footer>
+
+
+<script src="script.js"></script>
+<script src="notes.js"></script>
+
+</body>
+
+</html>
