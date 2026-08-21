@@ -1,0 +1,1360 @@
+/* =====================================================
+   SRKP AI STUDY ASSISTANT
+   Designed & Developed by Anish Jodhawat
+   ===================================================== */
+
+
+/* =========================
+   GLOBAL SETTINGS
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, #21165c 0%, transparent 30%),
+        radial-gradient(circle at 90% 20%, #073b55 0%, transparent 28%),
+        #070a16;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+::selection {
+    background: #7c5cff;
+    color: white;
+}
+
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+    height: 78px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(7, 10, 22, 0.78);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 22px;
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9d83ff,
+            #4024c7
+        );
+
+    box-shadow:
+        inset 4px 4px 10px rgba(255,255,255,0.25),
+        0 10px 25px rgba(82,55,220,0.4);
+
+    transform:
+        perspective(400px)
+        rotateX(8deg)
+        rotateY(-8deg);
+}
+
+.logo h2 {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    font-size: 10px;
+    color: #aeb5cb;
+}
+
+
+/* NAVIGATION */
+
+.navbar nav {
+    display: flex;
+    gap: 5px;
+}
+
+.navbar nav a {
+    padding: 10px 14px;
+
+    color: #aeb5cb;
+
+    font-size: 14px;
+
+    border-radius: 10px;
+
+    transition: 0.25s ease;
+}
+
+.navbar nav a:hover {
+    color: white;
+
+    background: rgba(255,255,255,0.08);
+
+    transform: translateY(-2px);
+}
+
+.navbar nav a.active {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,92,255,0.25),
+            rgba(0,212,255,0.08)
+        );
+
+    border: 1px solid rgba(124,92,255,0.25);
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.menu-button {
+    display: none;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO SECTION
+   ========================= */
+
+.hero {
+    max-width: 1250px;
+
+    min-height: 680px;
+
+    margin: auto;
+
+    padding: 80px 6%;
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    align-items: center;
+
+    gap: 50px;
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* COLLEGE BADGE */
+
+.college-badge {
+    display: inline-block;
+
+    padding: 10px 16px;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+
+    color: #d8d2ff;
+
+    background:
+        rgba(124,92,255,0.12);
+
+    border:
+        1px solid rgba(124,92,255,0.35);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.15);
+}
+
+
+/* HERO TITLE */
+
+.hero h1 {
+    font-size: clamp(45px, 6vw, 75px);
+
+    line-height: 1.03;
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #9d88ff,
+            #47e6ff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* HERO PARAGRAPH */
+
+.hero-content > p {
+    max-width: 650px;
+
+    color: #aeb5cb;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   HERO BUTTONS
+   ========================= */
+
+.hero-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 21px;
+
+    border-radius: 13px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: 0.3s ease;
+
+    cursor: pointer;
+}
+
+
+/* PRIMARY */
+
+.primary-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #8064ff,
+            #4932c7
+        );
+
+    box-shadow:
+        0 15px 35px rgba(91,66,220,0.35);
+}
+
+.primary-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 45px rgba(91,66,220,0.5);
+}
+
+
+/* SECONDARY */
+
+.secondary-btn {
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+}
+
+.secondary-btn:hover {
+    transform: translateY(-4px);
+
+    background:
+        rgba(255,255,255,0.09);
+}
+
+
+/* COURSE BADGES */
+
+.courses {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 30px;
+}
+
+.courses span {
+    padding: 7px 11px;
+
+    font-size: 11px;
+
+    color: #c7cee0;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 8px;
+}
+
+
+/* =========================
+   3D HERO AREA
+   ========================= */
+
+.hero-3d {
+    min-height: 450px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* 3D SCENE */
+
+.scene {
+    width: 350px;
+    height: 350px;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    perspective: 900px;
+
+    animation:
+        sceneFloat 6s ease-in-out infinite;
+}
+
+
+/* MAIN AI CORE */
+
+.ai-core {
+    width: 130px;
+    height: 130px;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        translateZ(40px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9b80ff,
+            #3620a5
+        );
+
+    box-shadow:
+
+        inset 8px 8px 18px
+        rgba(255,255,255,0.25),
+
+        inset -8px -8px 18px
+        rgba(0,0,0,0.25),
+
+        0 35px 70px
+        rgba(78,50,200,0.5);
+
+    animation:
+        coreFloat 4s ease-in-out infinite;
+}
+
+
+/* AI TEXT */
+
+.core-text {
+    font-size: 42px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 4px 10px rgba(0,0,0,0.3);
+}
+
+
+/* =========================
+   ORBITS
+   ========================= */
+
+.orbit {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(139,121,255,0.35);
+
+    transform-style: preserve-3d;
+}
+
+
+/* FIRST ORBIT */
+
+.orbit-one {
+    width: 330px;
+    height: 330px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(70deg);
+
+    animation:
+        orbitRotate 9s linear infinite;
+}
+
+
+/* SECOND ORBIT */
+
+.orbit-two {
+    width: 270px;
+    height: 270px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateY(65deg);
+
+    animation:
+        orbitRotateReverse 11s linear infinite;
+}
+
+
+/* THIRD ORBIT */
+
+.orbit-three {
+    width: 210px;
+    height: 210px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(60deg)
+        rotateY(30deg);
+
+    animation:
+        orbitRotate 7s linear infinite;
+}
+
+
+/* =========================
+   FLOATING 3D ICONS
+   ========================= */
+
+.floating-icon {
+    width: 65px;
+    height: 65px;
+
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    font-size: 29px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,0.3);
+
+    transform-style: preserve-3d;
+}
+
+
+/* BOOK */
+
+.book {
+    top: 20px;
+    left: 35px;
+
+    animation:
+        iconOne 6s ease-in-out infinite;
+}
+
+
+/* BRAIN */
+
+.brain {
+    right: 0;
+    top: 125px;
+
+    animation:
+        iconTwo 7s ease-in-out infinite;
+}
+
+
+/* SCIENCE */
+
+.science {
+    bottom: 25px;
+    left: 65px;
+
+    animation:
+        iconThree 8s ease-in-out infinite;
+}
+
+
+/* BULB */
+
+.bulb {
+    bottom: 70px;
+    right: 35px;
+
+    animation:
+        iconFour 6s ease-in-out infinite;
+}
+
+
+/* =========================
+   3D ANIMATIONS
+   ========================= */
+
+@keyframes sceneFloat {
+
+    0% {
+        transform:
+            perspective(900px)
+            rotateX(8deg)
+            rotateY(-5deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            perspective(900px)
+            rotateX(12deg)
+            rotateY(8deg)
+            translateY(-15px);
+    }
+
+    100% {
+        transform:
+            perspective(900px)
+            rotateX(8deg)
+            rotateY(-5deg)
+            translateY(0);
+    }
+}
+
+
+@keyframes coreFloat {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            translateZ(40px)
+            rotateY(0);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            translateZ(70px)
+            rotateY(8deg);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            translateZ(40px)
+            rotateY(0);
+    }
+}
+
+
+@keyframes orbitRotate {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateX(70deg)
+            rotateZ(0);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateX(70deg)
+            rotateZ(360deg);
+    }
+}
+
+
+@keyframes orbitRotateReverse {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateY(65deg)
+            rotateZ(360deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateY(65deg)
+            rotateZ(0);
+    }
+}
+
+
+@keyframes iconOne {
+
+    0%,100% {
+        transform:
+            translateZ(20px)
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateZ(80px)
+            translateY(-18px)
+            rotate(8deg);
+    }
+}
+
+
+@keyframes iconTwo {
+
+    0%,100% {
+        transform:
+            translateZ(30px)
+            translateY(0)
+            rotate(0);
+    }
+
+    50% {
+        transform:
+            translateZ(100px)
+            translateY(-20px)
+            rotate(-10deg);
+    }
+}
+
+
+@keyframes iconThree {
+
+    0%,100% {
+        transform:
+            translateZ(20px)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateZ(90px)
+            translateY(-15px)
+            rotate(12deg);
+    }
+}
+
+
+@keyframes iconFour {
+
+    0%,100% {
+        transform:
+            translateZ(30px)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateZ(100px)
+            translateY(-20px)
+            rotate(-8deg);
+    }
+}
+
+
+/* =========================
+   FEATURES SECTION
+   ========================= */
+
+.features-section {
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 90px 6%;
+}
+
+
+/* SECTION HEADING */
+
+.section-heading {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin:
+        0 auto
+        45px;
+}
+
+.section-heading small,
+.how-content small {
+    color: #9c8cff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.section-heading h2,
+.how-content h2 {
+    margin-top: 12px;
+
+    font-size:
+        clamp(28px,4vw,45px);
+}
+
+.section-heading p,
+.how-content p {
+    color: #9fa8be;
+
+    line-height: 1.7;
+
+    margin-top: 15px;
+}
+
+
+/* FEATURE GRID */
+
+.features-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 18px;
+}
+
+
+/* FEATURE CARD */
+
+.feature-card {
+    position: relative;
+
+    padding: 28px;
+
+    min-height: 270px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.07),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.2);
+
+    transition:
+        transform .3s ease,
+        border .3s ease,
+        background .3s ease;
+}
+
+
+.feature-card:hover {
+    transform:
+        translateY(-10px)
+        perspective(600px)
+        rotateX(2deg);
+
+    border-color:
+        rgba(124,92,255,0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(124,92,255,0.13),
+            rgba(255,255,255,0.04)
+        );
+}
+
+
+/* FEATURE ICON */
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    font-size: 29px;
+
+    background:
+        rgba(124,92,255,0.13);
+
+    border:
+        1px solid rgba(124,92,255,0.25);
+
+    margin-bottom: 20px;
+}
+
+
+.feature-card h3 {
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+
+.feature-card p {
+    color: #9fa8be;
+
+    line-height: 1.65;
+
+    font-size: 14px;
+}
+
+
+.card-link {
+    display: block;
+
+    margin-top: 20px;
+
+    color: #a797ff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   HOW SECTION
+   ========================= */
+
+.how-section {
+    max-width: 1120px;
+
+    margin: 40px auto 100px;
+
+    padding: 55px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+
+.steps {
+    display: grid;
+
+    gap: 12px;
+}
+
+
+.step {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 17px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    transition: .25s ease;
+}
+
+
+.step:hover {
+    transform: translateX(7px);
+
+    border-color:
+        rgba(124,92,255,0.3);
+}
+
+
+.step-number {
+    color: #9c8cff;
+
+    font-weight: 900;
+
+    font-size: 14px;
+
+    min-width: 30px;
+}
+
+
+.step h3 {
+    margin-bottom: 4px;
+}
+
+
+.step p {
+    color: #939db4;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   COLLEGE SECTION
+   ========================= */
+
+.college-section {
+    max-width: 1000px;
+
+    margin:
+        0 auto 100px;
+
+    padding: 0 6%;
+}
+
+
+.college-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,92,255,0.12),
+            rgba(0,212,255,0.05)
+        );
+
+    border:
+        1px solid rgba(124,92,255,0.2);
+}
+
+
+.college-icon {
+    width: 75px;
+    height: 75px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+
+.college-card h2 {
+    margin-bottom: 10px;
+}
+
+
+.college-card p {
+    color: #a4acc0;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    padding:
+        40px 6% 25px;
+
+    background:
+        rgba(0,0,0,0.15);
+}
+
+
+.footer-main {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.footer-main h2 {
+    font-size: 20px;
+}
+
+
+.footer-main p {
+    color: #8f98ae;
+
+    font-size: 13px;
+
+    margin-top: 8px;
+}
+
+
+.footer-links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+
+.footer-links a {
+    color: #929bb1;
+
+    font-size: 13px;
+
+    transition: .2s;
+}
+
+
+.footer-links a:hover {
+    color: white;
+}
+
+
+.copyright {
+    max-width: 1200px;
+
+    margin:
+        35px auto 0;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    text-align: center;
+
+    color: #6f788d;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+.copyright strong {
+    color: #a99cff;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .hero-content > p {
+        margin: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .courses {
+        justify-content: center;
+    }
+
+    .hero-3d {
+        min-height: 400px;
+    }
+
+    .features-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .how-section {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .navbar {
+        height: 70px;
+    }
+
+    .navbar nav {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+        right: 0;
+
+        padding: 15px 6%;
+
+        flex-direction: column;
+
+        background:
+            rgba(7,10,22,0.97);
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,0.08);
+    }
+
+    .navbar nav.show {
+        display: flex;
+    }
+
+    .navbar nav a {
+        padding: 14px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .hero {
+        padding-top: 60px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .scene {
+        transform:
+            scale(.85);
+    }
+
+    .how-section {
+        grid-template-columns: 1fr;
+
+        padding: 35px 25px;
+    }
+
+    .footer-main {
+        flex-direction: column;
+
+        text-align: center;
+
+        align-items: center;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .hero-3d {
+        min-height: 330px;
+    }
+
+    .scene {
+        transform:
+            scale(.7);
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+        min-height: auto;
+    }
+
+    .college-card {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 30px 20px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .courses {
+        gap: 6px;
+    }
+
+    .courses span {
+        font-size: 10px;
+    }
+}
