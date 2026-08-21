@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SRKP AI Study Assistant | Anish Jodhawat</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background">
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+</div>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">✦</span>
+        SRKP <b>AI</b>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#syllabus">Syllabus</a>
+        <a href="explainwithai.html">Explain with AI</a>
+        <a href="#mcq">MCQs</a>
+        <a href="#planner">Study Plan</a>
+    </nav>
+
+    <button class="theme-btn" onclick="toggleTheme()">☾</button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🤖 MDSU Student Learning Platform
+        </div>
+
+        <h1>
+            Study Smarter
+            <br>
+            With <span>AI Power</span>
+        </h1>
+
+        <p>
+            SRKP AI Study Assistant is designed for students
+            studying under Maharshi Dayanand Saraswati University,
+            Ajmer.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="explainwithai.html" class="primary-btn">
+                Explain with AI ✨
+            </a>
+
+            <a href="#syllabus" class="secondary-btn">
+                Explore Syllabus
+            </a>
+
+        </div>
+
+        <div class="creator-card">
+
+            <div class="creator-icon">
+                👨‍💻
+            </div>
+
+            <div>
+                <small>Made with ❤️ by</small>
+                <strong>Anish Jodhawat</strong>
+                <small>SRKP PG College, Kishangarh</small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 3D STUDENT -->
+
+    <div class="hero-visual">
+
+        <div class="platform">
+            <div class="platform-ring"></div>
+        </div>
+
+        <div class="student-3d">
+
+            <div class="head">
+                <div class="hair"></div>
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="smile"></div>
+            </div>
+
+            <div class="body">
+                <div class="shirt-logo">
+                    SRKP
+                </div>
+            </div>
+
+            <div class="book">
+                <div class="book-page">
+                    📖
+                </div>
+            </div>
+
+        </div>
+
+        <div class="floating object-brain">🧠</div>
+        <div class="floating object-atom">⚛️</div>
+        <div class="floating object-flask">🧪</div>
+        <div class="floating object-book">📚</div>
+        <div class="floating object-cube">◆</div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+    <div class="stat-card">
+        <strong>6</strong>
+        <span>UG Semesters</span>
+    </div>
+
+    <div class="stat-card">
+        <strong>4</strong>
+        <span>PG Semesters</span>
+    </div>
+
+    <div class="stat-card">
+        <strong>100+</strong>
+        <span>Subjects</span>
+    </div>
+
+    <div class="stat-card">
+        <strong>AI</strong>
+        <span>Study Assistant</span>
+    </div>
+
+</section>
+
+
+<!-- SYLLABUS -->
+
+<section id="syllabus" class="section">
+
+    <div class="section-title">
+
+        <span>MDSU SYLLABUS</span>
+
+        <h2>Find Your Complete Syllabus</h2>
+
+        <p>
+            Select course, semester and subject.
+        </p>
+
+    </div>
+
+
+    <div class="syllabus-box">
+
+        <div class="syllabus-controls">
+
+            <div>
+                <label>Course</label>
+
+                <select id="syllabusCourse"
+                        onchange="updateSyllabus()">
+
+                    <option value="BA">B.A.</option>
+                    <option value="BSc">B.Sc.</option>
+                    <option value="BCom">B.Com.</option>
+                    <option value="MA">M.A.</option>
+                    <option value="MSc">M.Sc.</option>
+                    <option value="MCom">M.Com.</option>
+
+                </select>
+            </div>
+
+
+            <div>
+
+                <label>Semester</label>
+
+                <select id="syllabusSemester"
+                        onchange="updateSyllabus()">
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>Subject</label>
+
+                <select id="syllabusSubject"
+                        onchange="showSyllabus()">
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div id="syllabusResult"
+             class="syllabus-result">
+
+            <div class="empty-syllabus">
+
+                <div>📚</div>
+
+                <h3>
+                    Select your course and subject
+                </h3>
+
+                <p>
+                    Your MDSU syllabus information
+                    will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUICK COURSES -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>COURSES</span>
+
+        <h2>Explore MDSU Programs</h2>
+
+    </div>
+
+
+    <div class="course-grid">
+
+        <div class="course-card"
+             onclick="selectCourse('BA')">
+
+            <div class="course-icon">
+                🎓
+            </div>
+
+            <h3>B.A.</h3>
+
+            <p>
+                Arts & Humanities
+            </p>
+
+            <span>
+                6 Semesters
+            </span>
+
+        </div>
+
+
+        <div class="course-card"
+             onclick="selectCourse('BSc')">
+
+            <div class="course-icon">
+                🔬
+            </div>
+
+            <h3>B.Sc.</h3>
+
+            <p>
+                Science
+            </p>
+
+            <span>
+                6 Semesters
+            </span>
+
+        </div>
+
+
+        <div class="course-card"
+             onclick="selectCourse('BCom')">
+
+            <div class="course-icon">
+                💼
+            </div>
+
+            <h3>B.Com.</h3>
+
+            <p>
+                Commerce
+            </p>
+
+            <span>
+                6 Semesters
+            </span>
+
+        </div>
+
+
+        <div class="course-card"
+             onclick="selectCourse('MA')">
+
+            <div class="course-icon">
+                📖
+            </div>
+
+            <h3>M.A.</h3>
+
+            <p>
+                Postgraduate Arts
+            </p>
+
+            <span>
+                4 Semesters
+            </span>
+
+        </div>
+
+
+        <div class="course-card"
+             onclick="selectCourse('MSc')">
+
+            <div class="course-icon">
+                🧪
+            </div>
+
+            <h3>M.Sc.</h3>
+
+            <p>
+                Postgraduate Science
+            </p>
+
+            <span>
+                4 Semesters
+            </span>
+
+        </div>
+
+
+        <div class="course-card"
+             onclick="selectCourse('MCom')">
+
+            <div class="course-icon">
+                📊
+            </div>
+
+            <h3>M.Com.</h3>
+
+            <p>
+                Postgraduate Commerce
+            </p>
+
+            <span>
+                4 Semesters
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AI -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>AI LEARNING</span>
+
+        <h2>Explain Any Topic with AI</h2>
+
+        <p>
+            Choose your subject and get an easy explanation.
+        </p>
+
+    </div>
+
+
+    <div class="ai-preview">
+
+        <div class="ai-preview-icon">
+            🤖
+        </div>
+
+        <h2>
+            Your Personal AI Tutor
+        </h2>
+
+        <p>
+            Explain difficult concepts,
+            simplify answers, generate examples,
+            create revision points and prepare MCQs.
+        </p>
+
+        <a href="explainwithai.html"
+           class="primary-btn">
+
+            Open Explain with AI ✨
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- MCQ -->
+
+<section id="mcq" class="section">
+
+    <div class="section-title">
+
+        <span>AI MCQs</span>
+
+        <h2>Practice Questions</h2>
+
+        <p>
+            Test your knowledge.
+        </p>
+
+    </div>
+
+
+    <div class="mcq-box">
+
+        <div id="mcqQuestion">
+            Click Generate MCQ to start.
+        </div>
+
+        <div id="options"></div>
+
+        <button class="primary-btn"
+                onclick="generateMCQ()">
+
+            Generate MCQ ✨
+
+        </button>
+
+        <div id="mcqResult"></div>
+
+    </div>
+
+</section>
+
+
+<!-- STUDY PLANNER -->
+
+<section id="planner"
+         class="section">
+
+    <div class="section-title">
+
+        <span>STUDY PLANNER</span>
+
+        <h2>Plan Your Study</h2>
+
+    </div>
+
+
+    <div class="planner">
+
+        <input id="taskInput"
+               type="text"
+               placeholder="Enter study task...">
+
+        <select id="timeInput">
+
+            <option>30 Minutes</option>
+            <option>1 Hour</option>
+            <option>2 Hours</option>
+            <option>3 Hours</option>
+
+        </select>
+
+        <button class="primary-btn"
+                onclick="addTask()">
+
+            + Add Task
+
+        </button>
+
+    </div>
+
+
+    <div id="taskList"
+         class="task-list">
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+    <div class="about-card">
+
+        <div class="about-logo">
+            ✦
+        </div>
+
+        <h2>
+            SRKP AI Study Assistant
+        </h2>
+
+        <p>
+            A student-focused learning platform
+            for students of SRKP PG College,
+            Kishangarh and students studying
+            under MDSU.
+        </p>
+
+        <div class="made-by">
+
+            Made with ❤️ by
+
+            <strong>
+                Anish Jodhawat
+            </strong>
+
+        </div>
+
+        <small>
+            SRKP PG College • Kishangarh • Rajasthan
+        </small>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div>
+        © 2026 SRKP AI Study Assistant
+    </div>
+
+    <div>
+        Made with ❤️ by
+        <strong>Anish Jodhawat</strong>
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
