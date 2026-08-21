@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Personal AI Tutor | SRKP AI</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tutor.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <div class="logo-box">S</div>
+
+        <div>
+            <h2>SRKP AI</h2>
+            <span>Study Assistant</span>
+        </div>
+    </div>
+
+    <nav id="navigation">
+        <a href="index.html">Home</a>
+        <a href="tutor.html" class="active">AI Tutor</a>
+        <a href="syllabus.html">Syllabus</a>
+        <a href="notes.html">Notes</a>
+        <a href="papers.html">Papers</a>
+    </nav>
+
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+</header>
+
+
+<main class="tutor-page">
+
+    <!-- HERO -->
+
+    <section class="tutor-hero">
+
+        <div class="college-badge">
+            🤖 SRKP Personal AI Tutor
+        </div>
+
+        <h1>
+            Ask <span>Anything</span>
+        </h1>
+
+        <p>
+            Your personal study assistant for BA, BSc, BCom,
+            MA, MSc and MCom. Ask questions from any subject,
+            chapter or topic.
+        </p>
+
+        <div class="course-pills">
+            <span>BA</span>
+            <span>BSc</span>
+            <span>BCom</span>
+            <span>MA</span>
+            <span>MSc</span>
+            <span>MCom</span>
+        </div>
+
+    </section>
+
+
+    <!-- CHAT -->
+
+    <section class="ai-chat">
+
+        <div class="chat-header">
+
+            <div class="assistant-info">
+
+                <div class="assistant-avatar">
+                    🤖
+                </div>
+
+                <div>
+                    <h2>SRKP Personal Tutor</h2>
+
+                    <p>
+                        <span class="online-dot"></span>
+                        Ready to help
+                    </p>
+                </div>
+
+            </div>
+
+            <button
+                class="new-chat"
+                onclick="clearChat()">
+                ＋ New Chat
+            </button>
+
+        </div>
+
+
+        <!-- OPTIONAL CONTEXT -->
+
+        <div class="study-context">
+
+            <select id="course">
+                <option value="">Course — Optional</option>
+                <option>BA</option>
+                <option>BSc</option>
+                <option>BCom</option>
+                <option>MA</option>
+                <option>MSc</option>
+                <option>MCom</option>
+            </select>
+
+            <select id="semester">
+                <option value="">Semester — Optional</option>
+                <option>Semester 1</option>
+                <option>Semester 2</option>
+                <option>Semester 3</option>
+                <option>Semester 4</option>
+                <option>Semester 5</option>
+                <option>Semester 6</option>
+            </select>
+
+            <input
+                id="subject"
+                type="text"
+                placeholder="Subject — Optional"
+            >
+
+        </div>
+
+
+        <!-- MESSAGES -->
+
+        <div id="chatMessages" class="chat-messages">
+
+            <div class="message tutor-message">
+
+                <div class="message-avatar">
+                    🤖
+                </div>
+
+                <div class="message-body">
+
+                    <strong>SRKP Personal Tutor</strong>
+
+                    <p>
+                        Hello! 👋 I'm your personal study assistant.
+                    </p>
+
+                    <p>
+                        You can ask me about <b>any academic topic</b>.
+                        You don't need to select a topic first.
+                    </p>
+
+                    <p>For example:</p>
+
+                    <ul>
+                        <li>Explain photosynthesis in simple words.</li>
+                        <li>What is the difference between debit and credit?</li>
+                        <li>Explain the French Revolution.</li>
+                        <li>Solve this mathematics problem step by step.</li>
+                        <li>Make BSc revision notes for this chapter.</li>
+                        <li>Give me 20 MCQs for my exam.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="quick-actions">
+
+            <button onclick="quickAsk('Explain this topic in simple language.')">
+                🧠 Explain Simply
+            </button>
+
+            <button onclick="quickAsk('Make short revision notes for this topic.')">
+                📝 Make Notes
+            </button>
+
+            <button onclick="quickAsk('Create 10 MCQs from this topic with answers.')">
+                ❓ Create MCQs
+            </button>
+
+            <button onclick="quickAsk('Give important exam questions from this topic.')">
+                🎯 Exam Questions
+            </button>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <div class="input-area">
+
+            <textarea
+                id="question"
+                placeholder="Ask your tutor anything about your studies..."
+                rows="1"
+            ></textarea>
+
+            <button
+                class="voice-button"
+                onclick="startVoiceInput()"
+                title="Voice input">
+                🎙️
+            </button>
+
+            <button
+                class="send-button"
+                onclick="askTutor()">
+                ➤
+            </button>
+
+        </div>
+
+        <div class="input-help">
+            Enter = Send &nbsp; • &nbsp;
+            Shift + Enter = New line
+        </div>
+
+    </section>
+
+
+    <!-- 3D AREA -->
+
+    <section class="visual-learning">
+
+        <div class="visual-title">
+
+            <div>
+                <small>VISUAL LEARNING</small>
+
+                <h2>Interactive 3D Learning</h2>
+
+                <p>
+                    Topic visualisations can appear here when
+                    a concept benefits from a model.
+                </p>
+            </div>
+
+            <div class="engine-status">
+                <span></span>
+                3D Engine
+            </div>
+
+        </div>
+
+        <div id="threeContainer" class="three-container">
+
+            <div class="visual-placeholder">
+
+                <div class="visual-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Ask a question to begin
+                </h3>
+
+                <p>
+                    Your visual learning area is ready.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-main">
+
+        <div>
+            <h2>SRKP AI Study Assistant</h2>
+            <p>Your digital college study companion.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="tutor.html">AI Tutor</a>
+            <a href="syllabus.html">Syllabus</a>
+            <a href="notes.html">Notes</a>
+            <a href="papers.html">Papers</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 SRKP AI Study Assistant
+        <br>
+        Designed & Developed by
+        <strong>Anish Jodhawat</strong>
+    </div>
+
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script src="script.js"></script>
+<script src="tutor.js"></script>
+
+</body>
+</html>
