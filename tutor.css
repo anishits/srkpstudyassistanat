@@ -1,0 +1,418 @@
+/* =====================================================
+   SRKP AI TUTOR CSS
+   ===================================================== */
+
+.tutor-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 70px 5%;
+}
+
+
+/* HERO */
+
+.tutor-hero {
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+}
+
+.tutor-hero h1 {
+    font-size: clamp(48px, 7vw, 78px);
+    margin: 25px 0 20px;
+}
+
+.tutor-hero h1 span {
+    background: linear-gradient(90deg,#9c86ff,#48e4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.tutor-hero p {
+    color: #a8b0c5;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.course-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.course-pills span {
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    color: #aeb7ca;
+    font-size: 12px;
+}
+
+
+/* CHAT */
+
+.ai-chat {
+    margin-top: 55px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
+
+.chat-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.assistant-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.assistant-avatar {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background: linear-gradient(145deg,#8167ff,#3622a8);
+    font-size: 26px;
+    box-shadow: 0 10px 30px rgba(90,70,220,.35);
+}
+
+.assistant-info h2 {
+    font-size: 17px;
+}
+
+.assistant-info p {
+    color: #8e9ab2;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.online-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #55e59a;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.new-chat {
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.05);
+    color: white;
+    padding: 9px 13px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+
+/* CONTEXT */
+
+.study-context {
+    padding: 15px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.study-context select,
+.study-context input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: #111526;
+    color: white;
+    outline: none;
+}
+
+
+/* CHAT MESSAGES */
+
+.chat-messages {
+    min-height: 430px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 25px;
+}
+
+.message {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    max-width: 850px;
+}
+
+.message-avatar {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: rgba(124,92,255,.15);
+}
+
+.message-body {
+    padding: 15px 18px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.045);
+    line-height: 1.7;
+    color: #d8deec;
+}
+
+.message-body strong {
+    display: block;
+    margin-bottom: 7px;
+    color: white;
+}
+
+.message-body p {
+    margin: 7px 0;
+}
+
+.message-body ul {
+    padding-left: 20px;
+}
+
+.user-message {
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+.user-message .message-body {
+    background: rgba(91,70,220,.25);
+}
+
+
+/* QUICK ACTIONS */
+
+.quick-actions {
+    padding: 0 20px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quick-actions button {
+    padding: 9px 12px;
+    border-radius: 9px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.04);
+    color: #b9c2d5;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.quick-actions button:hover {
+    background: rgba(124,92,255,.15);
+    color: white;
+}
+
+
+/* INPUT */
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.input-area textarea {
+    flex: 1;
+    resize: none;
+    min-height: 52px;
+    max-height: 160px;
+    padding: 15px;
+    border-radius: 13px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: #101424;
+    color: white;
+    outline: none;
+    font-family: inherit;
+}
+
+.voice-button,
+.send-button {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.voice-button {
+    background: rgba(255,255,255,.07);
+    color: white;
+}
+
+.send-button {
+    background: linear-gradient(135deg,#8065ff,#4930c4);
+    color: white;
+}
+
+.input-help {
+    padding: 0 20px 15px;
+    color: #707b93;
+    font-size: 11px;
+}
+
+
+/* VISUAL LEARNING */
+
+.visual-learning {
+    margin-top: 70px;
+}
+
+.visual-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.visual-title small {
+    color: #9b8cff;
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+.visual-title h2 {
+    font-size: 32px;
+    margin: 8px 0;
+}
+
+.visual-title p {
+    color: #919bb0;
+}
+
+.engine-status {
+    white-space: nowrap;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    font-size: 12px;
+    color: #a9b3c7;
+}
+
+.engine-status span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #52df9a;
+    margin-right: 6px;
+}
+
+
+/* 3D CONTAINER */
+
+.three-container {
+    height: 430px;
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,.08);
+    background:
+        radial-gradient(circle at center,
+        rgba(88,66,220,.16),
+        transparent 55%),
+        #090d1b;
+}
+
+.visual-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.visual-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+    animation: visualFloat 4s ease-in-out infinite;
+}
+
+.visual-placeholder h3 {
+    font-size: 20px;
+}
+
+.visual-placeholder p {
+    color: #7f899f;
+    margin-top: 8px;
+}
+
+
+@keyframes visualFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:750px) {
+
+    .tutor-page {
+        padding-top: 45px;
+    }
+
+    .chat-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .new-chat {
+        font-size: 11px;
+    }
+
+    .study-context {
+        grid-template-columns: 1fr;
+    }
+
+    .visual-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .three-container {
+        height: 350px;
+    }
+
+    .input-area {
+        gap: 6px;
+    }
+
+    .voice-button,
+    .send-button {
+        width: 45px;
+        height: 45px;
+    }
+}
