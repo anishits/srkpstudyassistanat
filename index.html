@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SRKP AI Study Assistant | Anish Jodhawat</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="background">
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="stars"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+
+    <div class="logo">
+      <span class="logo-icon">✦</span>
+      <span>SRKP <b>AI</b></span>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#ai">AI Tutor</a>
+      <a href="#notes">Notes</a>
+      <a href="#mcq">MCQs</a>
+      <a href="#planner">Study Plan</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <button class="theme-btn" onclick="toggleTheme()">☾</button>
+
+  </header>
+
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        🤖 AI Powered • Made for SRKP Students
+      </div>
+
+      <h1>
+        Study Smarter
+        <br>
+        With <span>AI Power</span>
+      </h1>
+
+      <p>
+        Your personal AI study assistant for
+        SRKP PG College, Kishangarh.
+        Get explanations, notes, MCQs and
+        personalized study plans.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="primary-btn" onclick="scrollToAI()">
+          Start Learning ✨
+        </button>
+
+        <button class="secondary-btn" onclick="showFeatures()">
+          Explore Features
+        </button>
+      </div>
+
+      <div class="creator-card">
+        <div class="creator-icon">👨‍💻</div>
+        <div>
+          <small>Made with ❤️ by</small>
+          <strong>Anish Jodhawat</strong>
+          <small>SRKP PG College, Kishangarh</small>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- 3D STUDENT -->
+    <div class="hero-visual">
+
+      <div class="platform">
+        <div class="platform-ring"></div>
+      </div>
+
+      <div class="student-3d">
+
+        <div class="head">
+          <div class="hair"></div>
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+          <div class="smile"></div>
+        </div>
+
+        <div class="body">
+          <div class="shirt-logo">SRKP</div>
+        </div>
+
+        <div class="book">
+          <div class="book-page">📖</div>
+        </div>
+
+      </div>
+
+      <!-- Floating 3D objects -->
+
+      <div class="floating object-brain">🧠</div>
+      <div class="floating object-atom">⚛️</div>
+      <div class="floating object-flask">🧪</div>
+      <div class="floating object-book">📚</div>
+      <div class="floating object-cube">◆</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATISTICS -->
+  <section class="stats">
+
+    <div class="stat-card">
+      <strong>5000+</strong>
+      <span>Students</span>
+    </div>
+
+    <div class="stat-card">
+      <strong>1000+</strong>
+      <span>Questions</span>
+    </div>
+
+    <div class="stat-card">
+      <strong>100+</strong>
+      <span>Topics</span>
+    </div>
+
+    <div class="stat-card">
+      <strong>24/7</strong>
+      <span>AI Support</span>
+    </div>
+
+  </section>
+
+
+  <!-- AI TUTOR -->
+  <section id="ai" class="section">
+
+    <div class="section-title">
+      <span>AI TUTOR</span>
+      <h2>Ask Anything. Learn Everything.</h2>
+      <p>Enter a question and get an easy explanation.</p>
+    </div>
+
+    <div class="ai-container">
+
+      <div class="question-panel">
+
+        <label>Course</label>
+
+        <select id="course">
+          <option>B.Sc.</option>
+          <option>B.A.</option>
+          <option>B.Com.</option>
+          <option>M.Sc.</option>
+        </select>
+
+        <label>Semester</label>
+
+        <select id="semester">
+          <option>Semester 1</option>
+          <option selected>Semester 2</option>
+          <option>Semester 3</option>
+          <option>Semester 4</option>
+          <option>Semester 5</option>
+          <option>Semester 6</option>
+        </select>
+
+        <label>Subject</label>
+
+        <select id="subject">
+          <option>Physics</option>
+          <option>Chemistry</option>
+          <option>Botany</option>
+          <option>Zoology</option>
+          <option>English</option>
+          <option>Mathematics</option>
+        </select>
+
+        <label>Your Question</label>
+
+        <textarea id="question"
+          placeholder="Example: Explain Newton's laws of motion..."></textarea>
+
+        <button class="primary-btn full" onclick="askAI()">
+          ✨ Explain with AI
+        </button>
+
+      </div>
+
+
+      <div class="answer-panel">
+
+        <div class="answer-header">
+          <span>🤖 AI Explanation</span>
+          <span id="status">Ready</span>
+        </div>
+
+        <div id="answer">
+
+          <div class="empty-ai">
+            <div class="big-robot">🤖</div>
+
+            <h3>Ask your first question</h3>
+
+            <p>
+              Your explanation will appear here.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 3D VISUALIZATION -->
+  <section class="section visualization-section">
+
+    <div class="section-title">
+      <span>3D LEARNING</span>
+      <h2>Understand Through Visualization</h2>
+      <p>Interactive 3D-style explanation of scientific concepts.</p>
+    </div>
+
+    <div class="visual-card">
+
+      <div class="visual-info">
+
+        <span class="small-label">PHYSICS</span>
+
+        <h2>Simple Pendulum</h2>
+
+        <p>
+          A pendulum oscillates around its mean position because
+          gravity provides the restoring force.
+        </p>
+
+        <div class="key-points">
+
+          <div>✓ Restoring force acts toward mean position.</div>
+          <div>✓ Oscillation occurs due to gravity.</div>
+          <div>✓ Time period depends on length.</div>
+
+        </div>
+
+        <button class="secondary-btn" onclick="togglePendulum()">
+          ⏸ Pause / Play
+        </button>
+
+      </div>
+
+
+      <!-- CSS 3D PENDULUM -->
+      <div class="pendulum-area">
+
+        <div class="pendulum-top"></div>
+
+        <div class="rope">
+          <div class="pendulum-ball"></div>
+        </div>
+
+        <div class="pendulum-shadow"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTES -->
+  <section id="notes" class="section">
+
+    <div class="section-title">
+      <span>SMART NOTES</span>
+      <h2>Your Digital Study Library</h2>
+      <p>Organize your study material by subject.</p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Subject Notes</h3>
+        <p>Keep notes organized semester-wise and subject-wise.</p>
+        <button onclick="openFeature('Notes')">Open Notes</button>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <h3>Previous Papers</h3>
+        <p>Practice previous examination questions.</p>
+        <button onclick="openFeature('Previous Papers')">View Papers</button>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3>Important Questions</h3>
+        <p>Save questions that you want to revise later.</p>
+        <button onclick="openFeature('Important Questions')">Explore</button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MCQ -->
+  <section id="mcq" class="section">
+
+    <div class="section-title">
+      <span>AI
