@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SRKP AI Study Assistant - Previous Year Papers and Practice Papers"
+    >
+
+    <title>
+        Previous Papers | SRKP AI Study Assistant
+    </title>
+
+
+    <!-- Main Website CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ==========================================
+           PAPERS PAGE
+           ========================================== */
+
+        .papers-page {
+
+            width: 100%;
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding:
+                70px 5%
+                90px;
+
+        }
+
+
+        /* ==========================================
+           HERO
+           ========================================== */
+
+        .papers-hero {
+
+            text-align: center;
+
+            max-width: 850px;
+
+            margin: 0 auto 50px;
+
+        }
+
+
+        .papers-badge {
+
+            display: inline-flex;
+
+            padding: 8px 14px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(120, 95, 255, 0.12);
+
+            border:
+                1px solid
+                rgba(120, 95, 255, 0.25);
+
+            color: #a99aff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .papers-hero h1 {
+
+            font-size:
+                clamp(42px, 7vw, 70px);
+
+            margin:
+                22px 0 15px;
+
+            line-height: 1.05;
+
+        }
+
+
+        .papers-hero h1 span {
+
+            color: #9b87ff;
+
+        }
+
+
+        .papers-hero p {
+
+            color: #9ba5ba;
+
+            line-height: 1.8;
+
+            font-size: 16px;
+
+        }
+
+
+        /* ==========================================
+           SEARCH BOX
+           ========================================== */
+
+        .paper-search-box {
+
+            margin-bottom: 25px;
+
+            position: relative;
+
+        }
+
+
+        .paper-search-box input {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding:
+                17px 20px 17px 50px;
+
+            border-radius: 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            background:
+                rgba(255,255,255,.04);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+
+        }
+
+
+        .paper-search-box input:focus {
+
+            border-color:
+                rgba(125, 100, 255, .6);
+
+            box-shadow:
+                0 0 25px
+                rgba(100,80,255,.12);
+
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            left: 18px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 18px;
+
+            opacity: .7;
+
+        }
+
+
+        /* ==========================================
+           FILTERS
+           ========================================== */
+
+        .paper-filters {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .paper-filters select {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            background: #101424;
+
+            color: white;
+
+            outline: none;
+
+            cursor: pointer;
+
+        }
+
+
+        .paper-filters select:focus {
+
+            border-color:
+                #806aff;
+
+        }
+
+
+        /* ==========================================
+           RESULT INFORMATION
+           ========================================== */
+
+        .paper-result-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 18px;
+
+            color: #8993aa;
+
+            font-size: 13px;
+
+        }
+
+
+        .clear-filter {
+
+            border: none;
+
+            background: transparent;
+
+            color: #a99aff;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ==========================================
+           PAPER GRID
+           ========================================== */
+
+        .papers-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        /* ==========================================
+           PAPER CARD
+           ========================================== */
+
+        .paper-card {
+
+            position: relative;
+
+            padding: 24px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+
+        }
+
+
+        .paper-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(126,102,255,.4);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.2);
+
+        }
+
+
+        .paper-top {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap: 15px;
+
+        }
+
+
+        .paper-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                rgba(124,92,255,.14);
+
+            font-size: 25px;
+
+        }
+
+
+        .paper-year {
+
+            padding: 6px 9px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.05);
+
+            color: #aab3c7;
+
+            font-size: 11px;
+
+        }
+
+
+        .paper-card h3 {
+
+            margin:
+                18px 0 8px;
+
+            font-size: 18px;
+
+        }
+
+
+        .paper-card p {
+
+            margin: 0;
+
+            color: #8f9aae;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ==========================================
+           TAGS
+           ========================================== */
+
+        .paper-tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 16px;
+
+        }
+
+
+        .paper-tags span {
+
+            padding: 6px 9px;
+
+            border-radius
